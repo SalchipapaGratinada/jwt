@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('responsable', function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->string('nombre',255);
-            $table->string('telefono')->unsigned();
+            $table->string('telefono');
 
             $table->date('fecha_creacion');
             $table->date('fecha_modificacion');

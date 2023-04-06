@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('mueble', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->integer('serial',100);
+            $table->integer('serial');
 
             $table->bigInteger('ubicacionmueble_id')->unsigned();
             $table->bigInteger('responsable_id')->unsigned();
-            $table->bigInteger('tipomueble')->unsigned();
+            $table->bigInteger('tipomueble_id')->unsigned();
             $table->date('fecha_creacion');
             $table->date('fecha_modificacion');
             

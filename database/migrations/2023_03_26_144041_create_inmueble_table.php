@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('inmueble', function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->decimal('m2',10);
-            $table->integer('numpisos',10);
-            $table->integer('numhabitacion',10);
+            $table->integer('numpisos');
+            $table->integer('numhabitacion');
             $table->string('ubicacion_inmueble',255);
             $table->string('dueno',255);
             $table->decimal('impuestopredial',30);
