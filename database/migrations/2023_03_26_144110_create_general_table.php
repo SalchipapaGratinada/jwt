@@ -20,9 +20,9 @@ return new class extends Migration
             $table->bigInteger('sede_id')->unsigned();
             $table->bigInteger('mueble_id')->unsigned();
             $table->bigInteger('inmueble_id')->unsigned();
-            $table->date('fecha_creacion');
-            $table->date('fecha_modificacion');
-            
+            $table->datetime('fecha_creacion');
+            $table->datetime('fecha_modificacion');
+
             $table->foreign('sede_id')->references('id')->on('sedes');
             $table->foreign('mueble_id')->references('id')->on('mueble');
             $table->foreign('inmueble_id')->references('id')->on('inmueble');

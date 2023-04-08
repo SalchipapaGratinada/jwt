@@ -15,8 +15,8 @@ return new class extends Migration
             $table->bigIncrements("id");
             $table->string('nombre',255);
 
-            $table->date('fecha_creacion');
-            $table->date('fecha_modificacion');
+            $table->datetime('fecha_creacion');
+            $table->datetime('fecha_modificacion');
         });
     }
 

@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('dueno',255);
             $table->decimal('impuestopredial',30);
             $table->bigInteger('tipo_idtipo')->unsigned();
-            $table->date('fecha_creacion');
-            $table->date('fecha_modificacion');
-            
+            $table->datetime('fecha_creacion');
+            $table->datetime('fecha_modificacion');
+
             $table->foreign('tipo_idtipo')->references('id')->on('tipoinmueble');
         });
     }

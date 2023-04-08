@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-
+use Carbon\Carbon;
 
 class InmuebleSeeder extends Seeder
 {
@@ -16,6 +16,8 @@ class InmuebleSeeder extends Seeder
      */
     public function run(): void
     {
+        $fechaActual = Carbon::now();
+        $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
         //
         DB::table('inmueble')->insert([
             'm2' => random_int(100, 1000),
@@ -25,8 +27,8 @@ class InmuebleSeeder extends Seeder
             'dueno' => Str::random(10),
             'impuestopredial' => 22000.0,
             'tipo_idtipo' =>1,
-            'fecha_creacion' => '2023-4-6',
-            'fecha_modificacion' => '2023-4-6',
+            'fecha_creacion' =>  $fechaActual,
+            'fecha_modificacion' =>  $fechaActual,
         ]);
         DB::table('inmueble')->insert([
             'm2' => random_int(100, 1000),
@@ -36,8 +38,8 @@ class InmuebleSeeder extends Seeder
             'dueno' => Str::random(10),
             'impuestopredial' => 22000.0,
             'tipo_idtipo' =>2,
-            'fecha_creacion' => '2023-4-6',
-            'fecha_modificacion' => '2023-4-6',
+            'fecha_creacion' =>  $fechaActual,
+            'fecha_modificacion' =>  $fechaActual,
         ]);
     }
 }

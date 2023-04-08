@@ -18,9 +18,9 @@ return new class extends Migration
             $table->bigInteger('ubicacionmueble_id')->unsigned();
             $table->bigInteger('responsable_id')->unsigned();
             $table->bigInteger('tipomueble_id')->unsigned();
-            $table->date('fecha_creacion');
-            $table->date('fecha_modificacion');
-            
+            $table->datetime('fecha_creacion');
+            $table->datetime('fecha_modificacion');
+
             $table->foreign('ubicacionmueble_id')->references('id')->on('ubicacionmueble');
             $table->foreign('responsable_id')->references('id')->on('responsable');
             $table->foreign('tipomueble_id')->references('id')->on('tipomueble');

@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class TipoMuebleSeeder extends Seeder
 {
@@ -15,16 +16,18 @@ class TipoMuebleSeeder extends Seeder
      */
     public function run(): void
     {
+        $fechaActual = Carbon::now();
+        $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
         //
         DB::table('tipomueble')->insert([
             'nombre' => 'computador',
-            'fecha_creacion' => '2023-4-6',
-            'fecha_modificacion' => '2023-4-6',
+            'fecha_creacion' => $fechaActual,
+            'fecha_modificacion' => $fechaActual,
         ]);
         DB::table('tipomueble')->insert([
             'nombre' => 'mesa',
-            'fecha_creacion' => '2023-4-6',
-            'fecha_modificacion' => '2023-4-6',
+            'fecha_creacion' => $fechaActual,
+            'fecha_modificacion' => $fechaActual,
         ]);
     }
 }

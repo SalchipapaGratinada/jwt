@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nombre',255);
             $table->string('telefono');
 
-            $table->date('fecha_creacion');
-            $table->date('fecha_modificacion');
+            $table->datetime('fecha_creacion');
+            $table->datetime('fecha_modificacion');
         });
     }
 

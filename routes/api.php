@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\MensajesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MensajesController;
+
+use App\Http\Controllers\PerfilController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+Route::apiResource('/perfil', PerfilController::class);
+
+
 Route::group([
     'prefix' => 'auth'
 ], function () {

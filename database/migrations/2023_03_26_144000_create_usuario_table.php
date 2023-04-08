@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('correo',255)->unique();
             $table->string('password',255);
             $table->bigInteger('perfil_idperfil')->unsigned();
-            $table->date('fecha_creacion');
-            $table->date('fecha_modificacion');
+            $table->datetime('fecha_creacion');
+            $table->datetime('fecha_modificacion');
 
             $table->foreign('perfil_idperfil')->references('id')->on('perfil');
         });
