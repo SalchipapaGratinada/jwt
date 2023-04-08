@@ -7,6 +7,15 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MensajesController;
 
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\SedesController;
+use App\Http\Controllers\ResponsablesController;
+use App\Http\Controllers\TipoMuebleController;
+use App\Http\Controllers\TipoInmuebleController;
+use App\Http\Controllers\UbicacionMuebleController;
+use App\Http\Controllers\MuebleController;
+use App\Http\Controllers\InmuebleController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\GeneralController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,7 +28,15 @@ use App\Http\Controllers\PerfilController;
 */
 
 Route::apiResource('/perfil', PerfilController::class);
-
+Route::apiResource('/sedes', SedesController::class);
+Route::apiResource('/responsables', ResponsablesController::class);
+Route::apiResource('/tipomueble', TipoMuebleController::class);
+Route::apiResource('/tipoinmueble', TipoInmuebleController::class);
+Route::apiResource('/ubicacionmueble', UbicacionMuebleController::class);
+Route::apiResource('/mueble', MuebleController::class);
+Route::apiResource('/inmueble', InmuebleController::class);
+Route::apiResource('/usuario', UsuarioController::class);
+Route::apiResource('/general', GeneralController::class);
 
 Route::group([
     'prefix' => 'auth'

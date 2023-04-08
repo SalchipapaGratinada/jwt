@@ -1,20 +1,20 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
-use App\Models\Perfil;
+use App\Models\General;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class PerfilController extends Controller
+
+class GeneralController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Perfil::all();
+        return General::all();
     }
 
     /**
@@ -24,20 +24,19 @@ class PerfilController extends Controller
     {
         $fechaActual = Carbon::now();
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
-
         $request->merge(['fecha_creacion'=>$fechaActual]);
         $request->merge(['fecha_modificacion'=>$fechaActual]);
 
-        Perfil::create($request->all());
-        return['Estado:' => true, 'Msj:' => 'El Perfil Fue Creado Con Exito.'];
+        General::create($request->all());
+        return['Estado:' => true, 'Msj:' => 'El General Fue Creado Con Exito.'];
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show( $id)
     {
-        return Perfil::find($id);
+        return General::find($id);
     }
 
     /**
@@ -49,18 +48,18 @@ class PerfilController extends Controller
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
         $request->merge(['fecha_modificacion'=>$fechaActual]);
 
-        $perfil = Perfil::find($id);
-        $perfil->update($request->all());
-        return['Estado:' => true, 'Msj:' => 'El Perfil Fue Actualizado Con Exito.', $perfil];
+        $general = General::find($id);
+        $general->update($request->all());
+        return['Estado:' => true, 'Msj:' => 'El General Fue Actualizado Con Exito.', $general];
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy( $id)
     {
-        $perfil = Perfil::find($id);
-        $perfil->delete();
-        return['Estado:' => true, 'Msj:' => 'El Perfil Fue Eliminado Con Exito.'];
+        $general = General::find($id);
+        $general->delete();
+        return['Estado:' => true, 'Msj:' => 'El General Fue Eliminado Con Exito.'];
     }
 }

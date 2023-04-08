@@ -1,20 +1,20 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
-use App\Models\Perfil;
+use App\Models\TipoInmueble;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class PerfilController extends Controller
+
+class TipoInmuebleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Perfil::all();
+        return TipoInmueble::all();
     }
 
     /**
@@ -24,12 +24,11 @@ class PerfilController extends Controller
     {
         $fechaActual = Carbon::now();
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
-
         $request->merge(['fecha_creacion'=>$fechaActual]);
         $request->merge(['fecha_modificacion'=>$fechaActual]);
 
-        Perfil::create($request->all());
-        return['Estado:' => true, 'Msj:' => 'El Perfil Fue Creado Con Exito.'];
+        TipoInmueble::create($request->all());
+        return['Estado:' => true, 'Msj:' => 'El Tipo Inmueble Fue Creado Con Exito.'];
     }
 
     /**
@@ -37,30 +36,30 @@ class PerfilController extends Controller
      */
     public function show($id)
     {
-        return Perfil::find($id);
+        return TipoInmueble::find($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,  $id)
+    public function update(Request $request, $id)
     {
         $fechaActual = Carbon::now();
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
         $request->merge(['fecha_modificacion'=>$fechaActual]);
 
-        $perfil = Perfil::find($id);
-        $perfil->update($request->all());
-        return['Estado:' => true, 'Msj:' => 'El Perfil Fue Actualizado Con Exito.', $perfil];
+        $tipoinmueble = TipoInmueble::find($id);
+        $tipoinmueble->update($request->all());
+        return['Estado:' => true, 'Msj:' => 'El Tipo Inmueble Fue Actualizado Con Exito.', $tipoinmueble];
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy( $id)
     {
-        $perfil = Perfil::find($id);
-        $perfil->delete();
-        return['Estado:' => true, 'Msj:' => 'El Perfil Fue Eliminado Con Exito.'];
+        $tipoinmueble = TipoInmueble::find($id);
+        $tipoinmueble->delete();
+        return['Estado:' => true, 'Msj:' => 'El Tipo Inmueble Fue Eliminado Con Exito.'];
     }
 }

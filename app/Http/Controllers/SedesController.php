@@ -1,20 +1,19 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
-use App\Models\Perfil;
+use App\Models\Sedes;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class PerfilController extends Controller
+class SedesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Perfil::all();
+        return Sedes::all();
     }
 
     /**
@@ -24,12 +23,11 @@ class PerfilController extends Controller
     {
         $fechaActual = Carbon::now();
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
-
         $request->merge(['fecha_creacion'=>$fechaActual]);
         $request->merge(['fecha_modificacion'=>$fechaActual]);
 
-        Perfil::create($request->all());
-        return['Estado:' => true, 'Msj:' => 'El Perfil Fue Creado Con Exito.'];
+        Sedes::create($request->all());
+        return['Estado:' => true, 'Msj:' => 'La Sede Fue Creada Con Exito.'];
     }
 
     /**
@@ -37,21 +35,21 @@ class PerfilController extends Controller
      */
     public function show($id)
     {
-        return Perfil::find($id);
+        return Sedes::find($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,  $id)
+    public function update(Request $request, $id)
     {
         $fechaActual = Carbon::now();
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
         $request->merge(['fecha_modificacion'=>$fechaActual]);
 
-        $perfil = Perfil::find($id);
-        $perfil->update($request->all());
-        return['Estado:' => true, 'Msj:' => 'El Perfil Fue Actualizado Con Exito.', $perfil];
+        $sede = Sedes::find($id);
+        $sede->update($request->all());
+        return['Estado:' => true, 'Msj:' => 'La Sede Fue Actualizado Con Exito.', $sede];
     }
 
     /**
@@ -59,8 +57,8 @@ class PerfilController extends Controller
      */
     public function destroy($id)
     {
-        $perfil = Perfil::find($id);
-        $perfil->delete();
-        return['Estado:' => true, 'Msj:' => 'El Perfil Fue Eliminado Con Exito.'];
+        $sede = Sedes::find($id);
+        $sede->delete();
+        return['Estado:' => true, 'Msj:' => 'La Sede Fue Eliminada Con Exito.'];
     }
 }

@@ -1,20 +1,20 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
-use App\Models\Perfil;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class PerfilController extends Controller
+
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Perfil::all();
+        return Usuario::all();
     }
 
     /**
@@ -24,12 +24,11 @@ class PerfilController extends Controller
     {
         $fechaActual = Carbon::now();
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
-
         $request->merge(['fecha_creacion'=>$fechaActual]);
         $request->merge(['fecha_modificacion'=>$fechaActual]);
 
-        Perfil::create($request->all());
-        return['Estado:' => true, 'Msj:' => 'El Perfil Fue Creado Con Exito.'];
+        Usuario::create($request->all());
+        return['Estado:' => true, 'Msj:' => 'El Usuario Fue Creado Con Exito.'];
     }
 
     /**
@@ -37,7 +36,7 @@ class PerfilController extends Controller
      */
     public function show($id)
     {
-        return Perfil::find($id);
+        return Usuario::find($id);
     }
 
     /**
@@ -49,9 +48,9 @@ class PerfilController extends Controller
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
         $request->merge(['fecha_modificacion'=>$fechaActual]);
 
-        $perfil = Perfil::find($id);
-        $perfil->update($request->all());
-        return['Estado:' => true, 'Msj:' => 'El Perfil Fue Actualizado Con Exito.', $perfil];
+        $usuario = Usuario::find($id);
+        $usuario->update($request->all());
+        return['Estado:' => true, 'Msj:' => 'El Usuario Fue Actualizado Con Exito.', $usuario];
     }
 
     /**
@@ -59,8 +58,8 @@ class PerfilController extends Controller
      */
     public function destroy($id)
     {
-        $perfil = Perfil::find($id);
-        $perfil->delete();
-        return['Estado:' => true, 'Msj:' => 'El Perfil Fue Eliminado Con Exito.'];
+        $usuario = Usuario::find($id);
+        $usuario->delete();
+        return['Estado:' => true, 'Msj:' => 'El Usuario Fue Eliminado Con Exito.'];
     }
 }
