@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 
 class UsuarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except' => ['store']]);
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Usuario::all();
+        return User::all();
     }
 
     /**
@@ -24,10 +29,15 @@ class UsuarioController extends Controller
     {
         $fechaActual = Carbon::now();
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
-        $request->merge(['fecha_creacion'=>$fechaActual]);
-        $request->merge(['fecha_modificacion'=>$fechaActual]);
+        $request->merge(['created_at'=>$fechaActual]);
+        $request->merge(['updated_at'=>$fechaActual]);
 
-        Usuario::create($request->all());
+        $user = new User(request()->all());
+        $user->password = bcrypt($user->password);
+
+        $request->merge(['password'=>$user->password]);
+
+        User::create($request->all());
         return['Estado:' => true, 'Msj:' => 'El Usuario Fue Creado Con Exito.'];
     }
 
@@ -36,7 +46,7 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        return Usuario::find($id);
+        return User::find($id);
     }
 
     /**
@@ -46,9 +56,14 @@ class UsuarioController extends Controller
     {
         $fechaActual = Carbon::now();
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
-        $request->merge(['fecha_modificacion'=>$fechaActual]);
+        $request->merge(['updated_at'=>$fechaActual]);
 
-        $usuario = Usuario::find($id);
+        $user = new User(request()->all());
+        $user->password = bcrypt($user->password);
+        $request->merge(['password'=>$user->password]);
+
+
+        $usuario = User::find($id);
         $usuario->update($request->all());
         return['Estado:' => true, 'Msj:' => 'El Usuario Fue Actualizado Con Exito.', $usuario];
     }
@@ -58,7 +73,7 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $usuario = Usuario::find($id);
+        $usuario = User::find($id);
         $usuario->delete();
         return['Estado:' => true, 'Msj:' => 'El Usuario Fue Eliminado Con Exito.'];
     }
