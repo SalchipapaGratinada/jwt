@@ -9,6 +9,10 @@ use Carbon\Carbon;
 
 class MuebleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except' => ['']]);
+    }
     /**
      * Display a listing of the resource.
      */

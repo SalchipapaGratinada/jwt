@@ -9,6 +9,11 @@ use Carbon\Carbon;
 
 class GeneralController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except' => ['']]);
+    }
     /**
      * Display a listing of the resource.
      */

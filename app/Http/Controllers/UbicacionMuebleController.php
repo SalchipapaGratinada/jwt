@@ -8,6 +8,10 @@ use Carbon\Carbon;
 
 class UbicacionMuebleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except' => ['']]);
+    }
     /**
      * Display a listing of the resource.
      */

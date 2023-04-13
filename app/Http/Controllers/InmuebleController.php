@@ -10,6 +10,10 @@ use Carbon\Carbon;
 
 class InmuebleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except' => ['']]);
+    }
     /**
      * Display a listing of the resource.
      */

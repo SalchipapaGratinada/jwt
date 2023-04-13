@@ -9,6 +9,10 @@ use Carbon\Carbon;
 
 class PerfilController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except' => ['']]);
+    }
     /**
      * Display a listing of the resource.
      */

@@ -22,8 +22,7 @@ class UsuarioSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "Alfredo",
             'email' => "dlasuncion30@gmail.com",
-            //'password' => Hash::make('password'),
-            'password' => "1234",
+            'password' => bcrypt("1234"),
             'perfil_idperfil'=> 1,
             'created_at' => $fechaActual,
             'updated_at' => $fechaActual,
@@ -31,8 +30,7 @@ class UsuarioSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "Luis",
             'email' => "dlasuncion50@gmail.com",
-            //'password' => Hash::make('password'),
-            'password' => "1234",
+            'password' => bcrypt("1234"),
             'perfil_idperfil'=> 2,
             'created_at' => $fechaActual,
             'updated_at' => $fechaActual,
@@ -40,8 +38,7 @@ class UsuarioSeeder extends Seeder
         DB::table('users')->insert([
             'name' => "Jose",
             'email' => "dlasuncion40@gmail.com",
-            //'password' => Hash::make('password'),
-            'password' => "1234",
+            'password' => bcrypt("1234"),
             'perfil_idperfil'=> 2,
             'created_at' => $fechaActual,
             'updated_at' => $fechaActual,
