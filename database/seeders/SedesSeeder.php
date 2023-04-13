@@ -21,14 +21,14 @@ class SedesSeeder extends Seeder
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
         //
         DB::table('sedes')->insert([
-            'nombre' => Str::random(5),
-            'ubicasede' => Str::random(10),
+            'nombre' => "Sede A",
+            'ubicasede' => "Calle 12",
             'fecha_creacion' => $fechaActual,
             'fecha_modificacion' => $fechaActual,
         ]);
         DB::table('sedes')->insert([
-            'nombre' => Str::random(5),
-            'ubicasede' => Str::random(10),
+            'nombre' => "Sede B",
+            'ubicasede' => "Calle 15",
             'fecha_creacion' => $fechaActual,
             'fecha_modificacion' => $fechaActual,
         ]);

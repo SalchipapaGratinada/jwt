@@ -19,21 +19,32 @@ class UsuarioSeeder extends Seeder
         $fechaActual = Carbon::now();
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
         //
-        DB::table('usuario')->insert([
-            'nombre' => Str::random(5),
-            'correo' => Str::random(8).'@gmail.com',
-            'password' => Hash::make('password'),
-            'perfil_idperfil'=> 2,
-            'fecha_creacion' => $fechaActual,
-            'fecha_modificacion' => $fechaActual,
-        ]);
-        DB::table('usuario')->insert([
-            'nombre' => Str::random(5),
-            'correo' => Str::random(8).'@gmail.com',
-            'password' => Hash::make('password'),
+        DB::table('users')->insert([
+            'name' => "Alfredo",
+            'email' => "dlasuncion30@gmail.com",
+            //'password' => Hash::make('password'),
+            'password' => "1234",
             'perfil_idperfil'=> 1,
-            'fecha_creacion' => $fechaActual,
-            'fecha_modificacion' => $fechaActual,
+            'created_at' => $fechaActual,
+            'updated_at' => $fechaActual,
+        ]);
+        DB::table('users')->insert([
+            'name' => "Luis",
+            'email' => "dlasuncion50@gmail.com",
+            //'password' => Hash::make('password'),
+            'password' => "1234",
+            'perfil_idperfil'=> 2,
+            'created_at' => $fechaActual,
+            'updated_at' => $fechaActual,
+        ]);
+        DB::table('users')->insert([
+            'name' => "Jose",
+            'email' => "dlasuncion40@gmail.com",
+            //'password' => Hash::make('password'),
+            'password' => "1234",
+            'perfil_idperfil'=> 2,
+            'created_at' => $fechaActual,
+            'updated_at' => $fechaActual,
         ]);
     }
 }

@@ -16,6 +16,7 @@ class PerfilSeeder extends Seeder
      */
     public function run(): void
     {
+
         $fechaActual = Carbon::now();
         $fechaActual = Carbon::now()->format('Y-m-d H:i:s');
         //
@@ -29,5 +30,15 @@ class PerfilSeeder extends Seeder
             'fecha_creacion' => $fechaActual,
             'fecha_modificacion' => $fechaActual,
         ]);
+
+        $this->call(UsuarioSeeder::class);
+        $this->call(ResponsableSeeder::class);
+        $this->call(UbicacionMuebleSeeder::class);
+        $this->call(TipoMuebleSeeder::class);
+        $this->call(TipoInmuebleSeeder::class);
+        $this->call(MuebleSeeder::class);
+        $this->call(InmuebleSeeder::class);
+        $this->call(SedesSeeder::class);
+        $this->call(GeneralSeeder::class);
     }
 }
