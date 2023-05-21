@@ -10,14 +10,19 @@ class UbicacionMuebleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('jwt', ['except' => ['']]);
+        $this->middleware('jwt', ['except' => ['index']]);
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return UbicacionMueble::all();
+        $response = array(
+            'status'=> true,
+            'data'=> UbicacionMueble::all()
+        );
+        return json_encode($response);
+       /*  return UbicacionMueble::all(); */
 
     }
 

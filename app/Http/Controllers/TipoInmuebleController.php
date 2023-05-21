@@ -11,14 +11,19 @@ class TipoInmuebleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('jwt', ['except' => ['']]);
+        $this->middleware('jwt', ['except' => ['index']]);
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return TipoInmueble::all();
+        $response = array(
+            'status'=> true,
+            'data'=> TipoInmueble::all()
+        );
+        return json_encode($response);
+        /* return TipoInmueble::all(); */
     }
 
     /**

@@ -11,14 +11,19 @@ class TipoMuebleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('jwt', ['except' => ['']]);
+        $this->middleware('jwt', ['except' => ['index']]);
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return TipoMueble::all();
+        $response = array(
+            'status'=> true,
+            'data'=> TipoMueble::all()
+        );
+        return json_encode($response);
+        /* return TipoMueble::all(); */
     }
 
     /**

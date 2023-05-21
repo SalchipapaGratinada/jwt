@@ -10,14 +10,19 @@ class SedesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('jwt', ['except' => ['']]);
+        $this->middleware('jwt', ['except' => ['index']]);
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Sedes::all();
+        $response = array(
+            'status'=> true,
+            'data'=> Sedes::all()
+        );
+        return json_encode($response);
+        /* return Sedes::all(); */
     }
 
     /**

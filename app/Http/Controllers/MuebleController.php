@@ -11,14 +11,26 @@ class MuebleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('jwt', ['except' => ['']]);
+        $this->middleware('jwt', ['except' => ['index']]);
     }
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        return Mueble::all();
+        /* $results = DB::select('SELECT mu.id as id, mu.serial as serial, ubim.sala as ubicacionmueble_id, res.nombre as responsable_id, tm.nombre as tipomueble_id, mu.fecha_creacion, mu.fecha_modificacion
+        FROM mueble AS mu
+        INNER JOIN ubicacionmueble AS ubim ON mu.ubicacionmueble_id = ubim.id
+        INNER JOIN responsable AS res ON mu.responsable_id = res.id
+        INNER JOIN tipomueble AS tm ON mu.tipomueble_id = tm.id;'); */
+
+        $response = array(
+            'status'=> true,
+            'data'=> Mueble::all()
+        );
+        return json_encode($response);
+        /* return Mueble::all(); */
     }
 
     /**

@@ -11,7 +11,7 @@ class UsuarioController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('jwt', ['except' => ['store']]);
+        $this->middleware('jwt', ['except' => ['store', 'index']]);
     }
 
     /**
@@ -19,7 +19,12 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        return User::all();
+        $response = array(
+            'status'=> true,
+            'data'=> User::all()
+        );
+        return json_encode($response);
+        /* return User::all(); */
     }
 
     /**

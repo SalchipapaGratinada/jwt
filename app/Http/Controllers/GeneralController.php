@@ -12,14 +12,19 @@ class GeneralController extends Controller
 
     public function __construct()
     {
-        $this->middleware('jwt', ['except' => ['']]);
+        $this->middleware('jwt', ['except' => ['index']]);
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return General::all();
+        $response = array(
+            'status'=> true,
+            'data'=> General::all()
+        );
+        return json_encode($response);
+        /* return General::all(); */
     }
 
     /**
